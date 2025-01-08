@@ -1,0 +1,43 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Admin Shelf{% endblock %}
+
+{% block content %}
+<h2>Book List</h2>
+<p>Below is a list of all books in the library:</p>
+
+<!-- Search Bar -->
+<form method="get" action="{% url 'admin_shelf' %}">
+    <input type="text" name="search" placeholder="Search by title or author" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Books Table -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>
+                    <a href="{% url 'view_book_details' book.id %}">View Details</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Add Book Button -->
+<div>
+    <a href="{% url 'add_book' %}">
+        <button>Add New Book</button>
+    </a>
+</div>
+{% endblock %}

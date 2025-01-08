@@ -1,0 +1,17 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Add New Staff{% endblock %}
+
+{% block content %}
+    <h2>Add New Staff</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Render the form fields -->
+        {{ form.as_p }}  <!-- Display form fields as paragraphs -->
+        
+        <button type="submit">Add Staff</button>
+    </form>
+    <a href="{% url 'add_staff' %}">Return to Staff</a>
+{% endblock %}

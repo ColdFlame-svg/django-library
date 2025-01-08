@@ -1,0 +1,35 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Fine Details{% endblock %}
+
+{% block content %}
+    <h2>Fine Details</h2>
+    
+    <p><strong>Student ID:</strong> {{ fine.student_id }}</p>
+    <p><strong>Last Name:</strong> {{ fine.last_name }}</p>
+    <p><strong>First Name:</strong> {{ fine.first_name }}</p>
+    
+    {% if fine.middle_name %}
+        <p><strong>Middle Name:</strong> {{ fine.middle_name }}</p>
+    {% endif %}
+    
+    {% if fine.suffix != 'None' %}
+        <p><strong>Suffix:</strong> {{ fine.suffix }}</p>
+    {% endif %}
+    
+    <p><strong>Book Title:</strong> {{ fine.book_title }}</p>
+    <p><strong>Date Borrowed:</strong> {{ fine.date_borrowed }}</p>
+    <p><strong>Date Returned:</strong> {{ fine.date_returned }}</p>
+    <p><strong>Days Overdue:</strong> {{ fine.days_overdue }}</p>
+    
+    <!-- Display the fine amount -->
+    <p><strong>Fine Amount:</strong> ₱{{ fine.fine_amount|floatformat:2 }}</p>
+
+    <nav>
+        <!-- Button to mark the fine as paid -->
+        <a href="{% url 'pay_fine' fine.id %}" class="btn">Paid</a>
+        
+        <!-- Button to go back to the fines list -->
+        <a href="{% url 'fines' %}" class="btn">Previous</a>
+    </nav>
+{% endblock %}

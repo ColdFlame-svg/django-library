@@ -1,0 +1,21 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Staff Details{% endblock %}
+
+{% block content %}
+    <!-- Staff Details -->
+    <h2>Staff Details</h2>
+
+    <p><strong>Staff ID:</strong> {{ staff.staff_id }}</p>
+    <p><strong>Last Name:</strong> {{ staff.last_name }}</p>
+    <p><strong>First Name:</strong> {{ staff.first_name }}</p>
+    <p><strong>Email:</strong> {{ staff.email }}</p>
+    
+
+    <form method="POST" action="{% url 'remove_staff' staff.id %}">
+        {% csrf_token %}
+        <button type="submit">Remove</button>
+    </form>
+    <!-- Return to Add Staff Page Button -->
+    <button onclick="window.location.href='{% url 'add_staff' %}'">Return to Staff List</button>
+{% endblock %}

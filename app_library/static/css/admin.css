@@ -1,0 +1,243 @@
+/* General Reset and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #800000; /* Maroon */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #800000; /* Maroon */
+    padding: 15px 30px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 15px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #b30000; /* Lighter Maroon on hover */
+}
+
+/* Forms and Input Elements */
+form {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #800000; /* Maroon */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #b30000; /* Lighter Maroon */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #800000; /* Maroon */
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table a {
+    color: #800000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+table a:hover {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+/* Button Styles */
+button {
+    background-color: #800000; /* Maroon */
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b30000; /* Lighter Maroon */
+}
+
+button[type="submit"] {
+    background-color: #ff6666; /* Light Red for Remove actions */
+}
+
+button[type="submit"]:hover {
+    background-color: #ff4d4d; /* Darker Red for hover effect */
+}
+
+/* Messages */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+ul li.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+ul li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Header and Footer */
+header {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-bottom: 3px solid #800000;
+}
+
+footer {
+    background-color: #800000; /* Maroon */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+/* Search Bar Styles */
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #800000;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #b30000;
+}
+
+/* Small Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    nav a {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form textarea,
+    form select {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+}
+

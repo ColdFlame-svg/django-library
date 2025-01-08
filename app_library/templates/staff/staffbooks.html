@@ -1,0 +1,41 @@
+{% extends 'staff/stbase.html' %}
+
+{% block title %}Staff Books{% endblock %}
+
+{% block content %}
+{% if staff_member %}
+    <h2>Welcome, Staff!</h2>
+{% else %}
+    <h2>Welcome, Staff {{ request.user.first_name }} {{ request.user.last_name }}!</h2>
+{% endif %}
+<p>Below is a list of all books available for staff:</p>
+
+<!-- Search Bar -->
+<form method="GET" action="{% url 'staff_books' %}">
+    <input type="text" name="search" placeholder="Search by Title or Author" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Books Table -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>
+                <!-- Link to view book details -->
+                <a href="{% url 'staff_book_detail' book.id %}">View Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'staff/stbase.html' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block content %}
+<p><strong>Title:</strong> {{ book.title }}</p>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><strong>Published Date:</strong> {{ book.published_date }}</p>
+<p><strong>Description:</strong> {{ book.description }}</p>
+
+{% if book.image %}
+    <p><strong>Cover Image:</strong></p>
+    <img src="{{ book.image.url }}" alt="Book Cover" style="max-width: 200px;">
+{% else %}
+    <p>No image available.</p>
+{% endif %}
+
+<p><strong>Status:</strong> {{ book.get_status_display }}</p>
+
+{% if borrower %}
+    <p><strong>Borrowed By:</strong> 
+        {{ borrower.first_name }} {{ borrower.last_name }}
+    </p>
+    {% if overdue_days > 0 %}
+        <p><strong>Overdue by:</strong> {{ overdue_days }} days</p>
+    {% else %}
+        <p><strong>Overdue by:</strong> None</p>
+    {% endif %}
+{% else %}
+    
+{% endif %}
+<a href="{% url 'staff_books' %}">Back to Shelf</a>
+{% endblock %}

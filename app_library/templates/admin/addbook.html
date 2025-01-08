@@ -1,0 +1,24 @@
+{% extends 'admin/adbase.html' %}
+{% load static %}  <!-- Load static at the top -->
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+{% block title %}Add New Book{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Add New Book</h1>
+    </header>
+
+    <!-- Book Form -->
+    <section>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Render the form fields here -->
+
+            <button type="submit">Add Book</button>
+            <a href="{% url 'admin_shelf' %}">
+                <button type="button">Cancel</button>
+            </a>
+        </form>
+    </section>
+{% endblock %}

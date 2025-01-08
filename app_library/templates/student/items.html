@@ -1,0 +1,40 @@
+{% extends 'student/clbase.html' %}
+
+{% block title %}Shelf{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Shelf</h2>
+<p>Below is a list of all books available for student:</p>
+
+<!-- Search Bar -->
+<form method="GET" action="">
+    <input type="text" name="q" placeholder="Search by title or author" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Books Table -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>
+                    <a href="{% url 'student_shelf_detail' book.id %}">View Details</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3">No books found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

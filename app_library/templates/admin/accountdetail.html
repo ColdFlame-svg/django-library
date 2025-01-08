@@ -1,0 +1,31 @@
+{% extends 'admin/adbase.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+{% block title %}Account Details{% endblock %}
+
+{% block content %}
+    <h2>Account Details</h2>
+    
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+    
+    {% if user.middle_name %}
+        <p><strong>Middle Name:</strong> {{ user.middle_name }}</p>
+    {% endif %}
+    
+    {% if user.suffix != 'None' %}
+        <p><strong>Suffix:</strong> {{ user.suffix }}</p>
+    {% endif %}
+    
+    <p><strong>Student ID:</strong> {{ user.student_id }}</p>
+    <p><strong>Email Address:</strong> {{ user.email }}</p>
+    <p><strong>Terms Accepted:</strong> {% if user.terms_accepted %} Yes {% else %} No {% endif %}</p>
+
+    <p><strong>Suffix:</strong> {{ user.get_suffix_display }}</p>
+    
+    <nav>
+        <a href="{% url 'remove_user' user.id %}">Remove Account</a> <!-- Link to remove account, passing the user's ID -->
+        <a href="{% url 'admin_users' %}">Back to User List</a> <!-- Link back to the user list -->
+    </nav>
+{% endblock %}

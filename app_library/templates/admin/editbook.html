@@ -1,0 +1,22 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Edit Book: {{ book.title }}</h1>
+    </header>
+    
+    <!-- Book Edit Form -->
+    <section>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Render the form fields -->
+
+            <button type="submit">Save Changes</button>
+            <a href="{% url 'admin_shelf' %}">
+                <button type="button">Cancel</button>
+            </a>
+        </form>
+    </section>
+{% endblock %}

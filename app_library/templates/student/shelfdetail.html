@@ -1,0 +1,23 @@
+{% extends 'student/clbase.html' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block content %}
+<p><strong>Title:</strong> {{ book.title }}</p>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><strong>Published Date:</strong> {{ book.published_date }}</p>
+<p><strong>Description:</strong> {{ book.description }}</p>
+
+{% if book.image %}
+    <p><strong>Cover Image:</strong></p>
+    <img src="{{ book.image.url }}" alt="Book Cover" style="max-width: 200px;">
+{% else %}
+    <p>No image available.</p>
+{% endif %}
+
+<p><strong>Status:</strong> {{ book.get_status_display }}</p>
+
+
+<a href="{% url 'student_dashboard' %}">Back to Shelf</a>
+{% endblock %}

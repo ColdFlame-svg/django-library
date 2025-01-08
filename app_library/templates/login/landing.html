@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Inline CSS for Responsive Welcome Header -->
+    <style>
+        header h1 {
+            font-size: 3em;  /* Default for larger screens */
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        main h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #800000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;  /* Medium screen size */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;  /* Small screen size */
+            }
+        }
+    </style>
+
+    <!-- Prevent back button script -->
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+        window.onload = noBack;
+        window.onpageshow = function(evt) { if (evt.persisted) noBack(); };
+        window.onunload = function() {};
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome</h1>
+    </header>
+
+    <main>
+        <h2>Login</h2>
+
+        <!-- Display the form -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <label for="uname">School ID</label>
+            <input type="text" name="uname" required>
+
+            <label for="upass">Password</label>
+            <input type="password" name="upass" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Display error messages -->
+        {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <p class="error-message">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Forgot Password and Create Account Buttons Centered -->
+        <div class="forgot-create-container">
+            <a href="{% url 'forgot_password' %}">Forgot Password</a>
+            <a href="{% url 'create_account' %}" class="create-account-btn">Create Account</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Auto-refresh script -->
+    <script>
+        setInterval(function() {
+          location.reload();
+        }, 2 * 60 * 1000);
+    </script>
+</body>
+</html>

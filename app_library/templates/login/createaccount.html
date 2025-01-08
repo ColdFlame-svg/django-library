@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Account</h2>
+
+        {% if messages %}
+            <ul class="message-container">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_student_id">Student ID</label>
+                {{ form.student_id }}
+            </div>
+            <div class="form-group">
+                <label for="id_first_name">First Name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_middle_name">Middle Name</label>
+                {{ form.middle_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Last Name</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_suffix">Suffix</label>
+                {{ form.suffix }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_password">Password</label>
+                {{ form.password }}
+            </div>
+            <div class="form-group">
+                <label for="id_confirm_password">Confirm Password</label>
+                {{ form.confirm_password }}
+            </div>
+            <div class="form-group checkbox-container">
+                <label for="id_terms_accepted">
+                    {{ form.terms_accepted }}
+                    I accept the terms and conditions
+                </label>
+            </div>
+
+            <button type="submit" class="center-button">Create Account</button>
+        </form>
+
+        <p class="return-link">
+            <a href="{% url 'landing_page' %}">Return to login</a>
+        </p>
+    </div>
+</body>
+</html>

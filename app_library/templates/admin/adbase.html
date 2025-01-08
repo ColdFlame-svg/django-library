@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}  <!-- Load static at the top -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+
+    <!-- Example: Link to a CSS file -->
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'add_staff' %}">Staff</a>
+        <a href="{% url 'admin_shelf' %}">Shelf</a>
+        <a href="{% url 'admin_users' %}">Accounts</a>
+        <a href="{% url 'fines' %}">Fines</a>
+        <a href="{% url 'adchange_password' %}">Change Password</a>
+        <a href="{% url 'logout_view' %}">Logout</a>
+    </nav>
+
+    <div>
+        {% block content %}
+        <!-- Content specific to this page will go here -->
+        {% endblock %}
+    </div>
+    <script>
+        // Set the time interval for the auto-refresh (e.g., 5 minutes)
+        setInterval(function() {
+          location.reload();  // Reload the current page
+        }, 2 * 60 * 1000);  // 5 minutes = 5 * 60 * 1000 milliseconds
+    </script>
+</body>
+</html>

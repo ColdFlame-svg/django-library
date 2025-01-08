@@ -1,0 +1,158 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F9F9F9;
+    color: #4A1C1C;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+}
+
+/* Header Styles */
+header {
+    background-color: #800000;
+    color: #FFFFFF;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Main Content Box */
+main {
+    padding: 40px;
+    background-color: #FFFFFF;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+label {
+    color: #800000;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Input Fields */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    border: 2px solid #800000;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #C23B22;
+    outline: none;
+    box-shadow: 0 0 8px rgba(194, 59, 34, 0.2);
+}
+
+/* Buttons */
+button, 
+input[type="submit"] {
+    background-color: #800000;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
+}
+
+button:hover, 
+input[type="submit"]:hover {
+    background-color: #C23B22;
+}
+
+/* Centering Forgot Password & Create Account Buttons */
+.forgot-create-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 40px auto;
+}
+
+.forgot-create-container a {
+    font-size: 1em;
+    text-decoration: none;
+    color: #800000;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-create-container a:hover {
+    color: #C23B22;
+    text-decoration: underline;
+}
+
+.create-account-btn {
+    background-color: #800000;
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.create-account-btn:hover {
+    background-color: #C23B22;
+}
+
+/* Footer */
+footer {
+    background-color: #800000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1em;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    main {
+        padding: 20px;
+        margin: 20px;
+        width: 95%;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}

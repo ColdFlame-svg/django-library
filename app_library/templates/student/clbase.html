@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Panel{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/student.css' %}">
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="{% url 'student_dashboard' %}">Dashboard</a> <!-- Link to student dashboard page -->
+        <a href="{% url 'student_shelf' %}">Shelf</a>
+        <a href="{% url 'change_password' %}">Change Password</a>
+        <a href="{% url 'logout_view' %}">Logout</a> <!-- Link to logout -->
+    </nav>
+
+    <!-- Main Content Block -->
+    <div>
+        {% block content %}
+        <!-- Content specific to the page will be injected here -->
+        {% endblock %}
+    </div>
+    <script>
+        // Set the time interval for the auto-refresh (e.g., 5 minutes)
+        setInterval(function() {
+          location.reload();  // Reload the current page
+        }, 2 * 60 * 1000);  // 5 minutes = 5 * 60 * 1000 milliseconds
+    </script>
+</body>
+</html>

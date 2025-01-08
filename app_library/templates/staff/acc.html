@@ -1,0 +1,49 @@
+{% extends 'staff/stbase.html' %}
+
+{% block title %}Account Details{% endblock %}
+
+{% block content %}
+    <h2>Account Details</h2>
+
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+
+    {% if user.middle_name %}
+        <p><strong>Middle Name:</strong> {{ user.middle_name }}</p>
+    {% endif %}
+
+    {% if user.suffix != 'None' %}
+        <p><strong>Suffix:</strong> {{ user.suffix }}</p>
+    {% endif %}
+
+    <p><strong>Student ID:</strong> {{ user.student_id }}</p>
+    <p><strong>Email Address:</strong> {{ user.email }}</p>
+    <p><strong>Terms Accepted:</strong> {% if user.terms_accepted %} Yes {% else %} No {% endif %}</p>
+
+    <p><strong>Suffix:</strong> {{ user.get_suffix_display }}</p>
+
+    <!-- Include Transaction Details from another template -->
+    <ul>
+        {% for transaction in transactions %}
+            <li>
+                <strong>Transaction ID:</strong> {{ transaction.transaction_id }}<br>
+                <strong>Title:</strong> {{ transaction.title }}<br>
+                <strong>Borrow Date:</strong> {{ transaction.borrow_date }}<br>
+                <strong>Return Date:</strong> {{ transaction.return_date }}<br>
+                <strong>Days Overdue:</strong> {{ transaction.days_overdue }}<br>
+    
+                <!-- Remove Button for each transaction -->
+                <form action="{% url 'remove_transaction' transaction.transaction_id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <!-- Back to Students link -->
+    <a href="{% url 'user_account' %}">Back to Students</a>
+
+{% endblock %}

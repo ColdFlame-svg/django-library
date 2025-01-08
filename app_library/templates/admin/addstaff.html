@@ -1,0 +1,42 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Staff Management{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}!</h2>
+<h2>Staff List</h2>
+<p>Below is a list of all staff members:</p>
+
+<!-- Search Bar -->
+<form method="get" action="{% url 'add_staff' %}">
+    <input type="text" name="search" placeholder="Search by name or ID" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Staff Table -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Staff ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in staff_members %}
+            <tr>
+                <td>{{ staff.staff_id }}</td>
+                <td>{{ staff.last_name }}</td>
+                <td>{{ staff.first_name }}</td>
+                <td>
+                    <a href="{% url 'view_details' staff_id=staff.id %}">View Details</a> |
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Add Staff Button -->
+<button onclick="window.location.href='{% url 'new_staff' %}'">Add Staff</button>
+{% endblock %}

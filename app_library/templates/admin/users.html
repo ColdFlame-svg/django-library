@@ -1,0 +1,38 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Account List{% endblock %}
+
+{% block content %}
+<h2>User Account List</h2>
+<p>Below is a list of all user accounts:</p>
+
+<!-- Search Bar -->
+<form method="get" action="{% url 'admin_users' %}">
+    <input type="text" name="search" placeholder="Search by Student ID, Name, or Email" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Users Table -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.student_id }}</td>
+                <td>{{ user.first_name }} {{ user.middle_name }} {{ user.last_name }} {{ user.suffix }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="{% url 'view_user_details' user.id %}">View Details</a> <!-- Link to the user's detailed view -->
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

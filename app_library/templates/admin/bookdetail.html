@@ -1,0 +1,49 @@
+{% extends 'admin/adbase.html' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block content %}
+    <!-- Include the book details -->
+    <h2>Book Details</h2>
+    <p><strong>Title:</strong> {{ book.title }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+    <p><strong>Published Date:</strong> {{ book.published_date }}</p>
+    <p><strong>Description:</strong> {{ book.description }}</p>
+
+    {% if book.image %}
+        <p><strong>Cover Image:</strong></p>
+        <img src="{{ book.image.url }}" alt="Book Cover" style="max-width: 200px;">
+    {% else %}
+        <p>No image available.</p>
+    {% endif %}
+
+    <p><strong>Status:</strong> {{ book.get_status_display }}</p>
+
+    {% if borrower %}
+        <p><strong>Borrowed By:</strong>
+            {{ borrower.first_name }} {{ borrower.last_name }}
+            {% if borrower.suffix != 'None' %}, {{ borrower.get_suffix_display }}{% endif %}
+        </p>
+    {% else %}
+        <p><strong>Borrowed By:</strong> Available</p>
+    {% endif %}
+
+    <nav>
+        <!-- Edit Book Button -->
+        <a href="{% url 'edit_book' book.id %}">
+            <button>Edit Book</button>
+        </a>
+    
+        <!-- Remove Book Button -->
+        <form action="{% url 'remove_book' book.id %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Remove Book</button>
+        </form>
+    
+        <!-- Back to Shelf Button -->
+        <a href="{% url 'admin_shelf' %}">
+            <button>Back to Shelf</button>
+        </a>
+    </nav>
+{% endblock %}

@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>Password Reset Request</title>
+</head>
+<body>
+    <p>Hi {{ user.first_name }},</p>
+    <p>You requested a password reset. Click the link below to reset your password:</p>
+    <p><a href="http://{{ reset_url }}">Reset Password</a></p>
+    <p>If you didn't request this, you can ignore this email.</p>
+</body>
+</html>
